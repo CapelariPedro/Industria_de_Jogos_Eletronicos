@@ -56,12 +56,12 @@
                      <children>
                         <TableView fx:id="tableProdutos" layoutY="77.0" prefHeight="274.0" prefWidth="600.0">
                           <columns>
-                            <TableColumn fx:id="colId" prefWidth="75.0" text="ID" />
-                            <TableColumn fx:id="colNome" prefWidth="75.0" text="Nome" />
-                            <TableColumn fx:id="colQuantidade" prefWidth="75.0" text="Quantidade" />
-                            <TableColumn fx:id="colPreco" prefWidth="75.0" text="Preço" />
-                              <TableColumn fx:id="colCategoria" prefWidth="75.0" text="Categoria" />
-                              <TableColumn fx:id="colLocalizacao" prefWidth="75.0" text="Localização" />
+                           <TableColumn fx:id="colId" prefWidth="75.0" text="ID" />
+                           <TableColumn fx:id="colNome" prefWidth="75.0" text="Nome" />
+                           <TableColumn fx:id="colQuantidade" prefWidth="75.0" text="Quantidade" />
+                           <TableColumn fx:id="colPreco" prefWidth="75.0" text="Preço" />
+                           <TableColumn fx:id="colCategoria" prefWidth="75.0" text="Categoria" />
+                           <TableColumn fx:id="colLocalizacao" prefWidth="75.0" text="Localização" />
                           </columns>
                         </TableView>
                      </children>
