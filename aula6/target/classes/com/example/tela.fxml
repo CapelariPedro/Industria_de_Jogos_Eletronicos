@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.VBox?>
+
+<TabPane prefHeight="429.0" prefWidth="617.0"
+         xmlns="http://javafx.com/javafx"
+         xmlns:fx="http://javafx.com/fxml"
+         fx:controller="com.example.controllers.ProdutoController">
+
+    <tabs>
+        <!-- Aba de Cadastro -->
+        <Tab text="Cadastro">
+            <content>
+                <VBox alignment="CENTER" spacing="10">
+                    <Label text="Nome do Produto" />
+                    <TextField fx:id="txtNome" prefHeight="25.0" prefWidth="200.0" />
+
+                    <Label text="Quantidade" />
+                    <TextField fx:id="txtQuantidade" prefHeight="25.0" prefWidth="200.0" />
+
+                    <Label text="Preço" />
+                    <TextField fx:id="txtPreco" prefHeight="25.0" prefWidth="200.0" />
+
+                    <Button onAction="#salvarProduto" text="Salvar" />
+                </VBox>
+            </content>
+        </Tab>
+
+        <!-- Aba de Lista de Produtos -->
+        <Tab text="Lista de Produtos">
+            <content>
+                <VBox spacing="10">
+                    <TableView fx:id="tableProdutos">
+                        <columns>
+                            <TableColumn fx:id="colId" text="ID" />
+                            <TableColumn fx:id="colNome" text="Nome" />
+                            <TableColumn fx:id="colQuantidade" text="Quantidade" />
+                            <TableColumn fx:id="colPreco" text="Preço" />
+                        </columns>
+                    </TableView>
+                </VBox>
+            </content>
+        </Tab>
+    </tabs>
+</TabPane>
