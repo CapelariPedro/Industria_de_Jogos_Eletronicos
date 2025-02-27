@@ -9,8 +9,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.control.TabPane;
-import javafx.scene.control.Tab;
+
 import java.sql.*;
 
 public class ProdutoController {
@@ -67,8 +66,10 @@ public class ProdutoController {
             stmt.executeUpdate();
 
             carregarProdutos();
+            mostrarAlerta(Alert.AlertType.INFORMATION, "Sucesso", "Produto salvo com sucesso!");
         } catch (SQLException e) {
             e.printStackTrace();
+            mostrarAlerta(Alert.AlertType.ERROR, "Erro", "Erro ao salvar o produto!" + e.getMessage());
         }
     }
 
@@ -91,8 +92,11 @@ public class ProdutoController {
             stmt.executeUpdate();
 
             carregarProdutos();
+
+            mostrarAlerta(Alert.AlertType.INFORMATION, "Sucesso", "Produto atualizado com sucesso!");
         } catch (SQLException e) {
             e.printStackTrace();
+            mostrarAlerta(Alert.AlertType.ERROR, "Erro", "Erro ao atualizar o produto!" + e.getMessage());
         }
     }
 
@@ -105,9 +109,9 @@ public class ProdutoController {
         colLocalizacao.setCellValueFactory(new PropertyValueFactory<>("localizacao"));
         colCategoria.setCellValueFactory(new PropertyValueFactory<>("categoria"));
 
-        cmbCategoria.getItems().addAll("Eletrônicos", "Máquinas", "Peças", "Utilitários");
-        cmbCategoriaAtualizar.getItems().addAll("Eletrônicos", "Máquinas", "Peças", "Utilitários");
-        filtroCategoria.getItems().addAll("Eletrônicos", "Máquinas", "Peças", "Utilitários");
+        cmbCategoria.getItems().addAll("Eletrônicos", "Máquinas", "Peças", "Utilitários","Acessórios");
+        cmbCategoriaAtualizar.getItems().addAll("Eletrônicos", "Máquinas", "Peças", "Utilitários","Acessórios");
+        filtroCategoria.getItems().addAll("Eletrônicos", "Máquinas", "Peças", "Utilitários","Acessórios");
 
         carregarProdutos();
 
@@ -196,11 +200,14 @@ public class ProdutoController {
 
                 carregarProdutos();
 
+                mostrarAlerta(Alert.AlertType.INFORMATION,"Sucesso" , "Produto excluído com sucesso!");
+
                 //volta para a tab de visualização
                 tabPane.getSelectionModel().select(tabListaProdutos);
 
             } catch (SQLException e) {
                 e.printStackTrace();
+                mostrarAlerta(Alert.AlertType.ERROR, "Erro", "Erro ao excluir o produto!" + e.getMessage());
             }
         }
     }
@@ -217,6 +224,15 @@ public class ProdutoController {
             tableProdutos.setItems(listaProdutos);
         } catch (SQLException e) {
             e.printStackTrace();
+            mostrarAlerta(Alert.AlertType.ERROR,"Erro","Erro ao carregar Produtos: " + e.getMessage());
         }
+    }
+
+    private void mostrarAlerta(Alert.AlertType tipo, String titulo, String mensagem) {
+        Alert alerta = new Alert(tipo);
+        alerta.setTitle(titulo);
+        alerta.setHeaderText(null);
+        alerta.setContentText(mensagem);
+        alerta.showAndWait();
     }
 }
